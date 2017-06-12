@@ -54,7 +54,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        {!! Auth::user()->name!!} 
+                       {!! Auth::user()->lastname!!} {!! Auth::user()->firstname!!} 
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -83,7 +83,7 @@
                             <a href="{!! url('adminsites/category/list') !!}">Quản lý danh mục</a>
                         </li>
                         <li>
-                            <a href="{!! url('adminsites/category/list') !!}">Quản lý hệ điều hành</a>
+                            <a href="{!! url('adminsites/system/list') !!}">Quản lý hệ điều hành</a>
                         </li>
                          <li>
                             <a href="{!! url('adminsites/user/add') !!}">Thêm User</a>

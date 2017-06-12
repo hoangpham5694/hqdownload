@@ -1,11 +1,11 @@
 @extends('admins.master')
 @section('header')
-    <title>Admin::Quản lý danh mục</title>
+    <title>Admin::Quản lý hệ điều hành</title>
 @endsection
-@section('title','Quản lý danh mục')
+@section('title','Quản lý hệ điều hành')
 @section('content')
-<div ng-controller="CateController">
-<a  class="btn btn-outline btn-primary" ng-click="modal('add')">Thêm danh mục mới</a>
+<div ng-controller="SystemController">
+<a  class="btn btn-outline btn-primary" ng-click="modal('add')">Thêm hệ điều hành mới</a>
 <table class="table table-hover" >
                               <thead>
                                     <tr>
@@ -17,16 +17,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                	<tr ng-repeat="category in categories">
-                                		<td>{% category.id %}</td>
-                                		<td>{% category.name %}</td>
-                                		<td>{% category.count_softs %}</td>
+                                	<tr ng-repeat="system in systems">
+                                		<td>{% system.id %}</td>
+                                		<td>{% system.name %}</td>
+                                		<td>{% system.count_softs %}</td>
                                 		
                                 		<td>
-                                         <a class="btn btn-xs btn-primary" ng-click="modal('edit',category.id, category.name)" >
+                                         <a class="btn btn-xs btn-primary" ng-click="modal('edit',system.id, system.name)" >
                                          <i class="glyphicon glyphicon-edit" aria-hidden="true"></i> Sửa
                                             </a>
-                                              <a class="btn btn-xs btn-danger" ng-click="delete(category.id)" >
+                                              <a class="btn btn-xs btn-danger" ng-click="delete(system.id)" >
                                          <i class="glyphicon glyphicon-edit" aria-hidden="true"></i> Xóa
                                             </a>
 
@@ -53,9 +53,9 @@
       <div class="modal-body">
  <form class="form-horizontal" name="frmMonth">
   <div class="form-group">
-    <label for="inputmonth" class="col-sm-3 control-label">Tên danh mục:</label>
+    <label for="inputmonth" class="col-sm-3 control-label">Tên hệ điều hành:</label>
     <div class="col-sm-9">
-      <input type="text" class="form-control" ng-model="cateName" id="inputmonth" placeholder="Nhập tên nhóm">
+      <input type="text" class="form-control" ng-model="systemName" id="inputmonth" placeholder="Nhập tên nhóm">
     </div>
   </div>
 
@@ -75,5 +75,5 @@
 </div>
 @endsection
 @section('footer')
-  <script src="<?php echo asset('app/controller/admins/CateController.js') ; ?>"></script>  
+  <script src="<?php echo asset('app/controller/admins/SystemController.js') ; ?>"></script>  
 @endsection

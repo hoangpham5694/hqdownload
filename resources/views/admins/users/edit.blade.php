@@ -4,7 +4,7 @@
 @endsection
 @section('title','Sửa user')
 @section('content')
-<div ng-controller="UserListController">
+<div>
 
 <div class="col-md-7"  >
   <form  action=""  method="POST" enctype="multipart/form-data" class="form-horizontal">

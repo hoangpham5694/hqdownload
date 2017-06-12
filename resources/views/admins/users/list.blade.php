@@ -51,7 +51,7 @@
                                         <th>Họ</th>
                                         <th>Tên</th>
                                         <th>Vai trò</th>
-                                        <th>Số video</th>
+                                        <th>Số soft</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -65,7 +65,7 @@
                                           <span ng-switch-when="1">Quản trị</span>
                                           <span ng-switch-when="2">Nhân viên</span>
                                     </td>
-                                    <td>{%user.count_videos%}</td>
+                                    <td>{%user.count_softs%}</td>
                                 		<td>
                                          <a class="btn btn-xs btn-primary" ng-href="{{ url('adminsites/user/edit') }}/{%user.id%}" >
                                          <i class="glyphicon glyphicon-edit" aria-hidden="true"></i> Sửa
