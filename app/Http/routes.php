@@ -12,11 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('guests/index');
 });
 
 Route::get('login',['uses'=>'LoginController@getLogin']);
-Route::post('login',['uses'=>'LoginController@postLogin']);
+Route::post('login',['as'=>'getLogin','uses'=>'LoginController@postLogin']);
 Route::get('logout',['uses'=>'LoginController@getLogout']);
 Route::group(['middleware'=>'isroleadmin'], function(){
 	Route::group(['prefix' => 'adminsites'], function(){
@@ -34,6 +34,17 @@ Route::group(['middleware'=>'isroleadmin'], function(){
                 Route::get('delete/{id}',['uses'=>'CategoryController@getDeleteCateAjax']);
     		});
     	});
+    	Route::group(['prefix' => 'system'], function(){
+    		Route::get('list',['uses'=>'SystemController@getSystemList']);
+            
+    		Route::group(['prefix' => 'ajax'], function(){
+    			Route::get('list/{max}/{page}',['uses'=>'SystemController@getSystemListAjax']);
+    			Route::get('total',['uses'=>'SystemController@getTotalSystemAjax']);
+    			Route::get('add',['uses'=>'SystemController@getAddSystemAjax']);
+                Route::get('edit',['uses'=>'SystemController@getEditSystemAjax']);
+                Route::get('delete/{id}',['uses'=>'SystemController@getDeleteSystemAjax']);
+    		});
+    	});
         Route::group(['prefix' => 'user'], function(){
             Route::get('list',['uses'=>'UserController@getUserList']);
             Route::get('add',['uses'=>'UserController@getUserAdd']);
@@ -48,6 +59,33 @@ Route::group(['middleware'=>'isroleadmin'], function(){
                 Route::get('checkunique/{username?}',['uses'=>'UserController@getCheckUniqueUserAjax']);
             });
         });
+        Route::group(['prefix' => 'account'], function(){
+    		Route::get('edit-profile',['uses'=>'AccountController@getEditProfile']);
+            Route::post('edit-profile',['uses'=>'AccountController@postEditProfile']);
 
+    	});
 	});
+});
+Route::group(['middleware'=>'isrolemanager'], function(){
+	Route::group(['prefix' => 'managersites'], function(){
+		Route::get('/', function(){
+    		return view('managers.dashboard.main');
+    	});
+	    Route::group(['prefix' => 'software'], function(){
+	    	Route::get('add',['uses'=>'SoftwareController@getAddSoftwareManager']);
+	        Route::post('add',['uses'=>'SoftwareController@postAddSoftwareManager']);
+	        Route::get('edit/{id}',['uses'=>'SoftwareController@getEditSoftwareManager']);
+	        Route::post('edit/{id}',['uses'=>'SoftwareController@postEditSoftwareManager']);
+	        Route::get('detail/{id}',['uses'=>'SoftwareController@getDetailSoftwareManager']);
+	        Route::get('list',['uses'=>'SoftwareController@getListSoftwareManager']);
+	    	Route::group(['prefix' => 'ajax'], function(){
+	    		Route::get('list/{max}/{page}',['uses'=>'SoftwareController@getSoftwareListAjax']);
+      			Route::get('total',['uses'=>'SoftwareController@getTotalSoftwareAjax']);
+      			Route::get('setstatus/{softwareid}/{status}',['uses'=>'SoftwareController@getSetStatusAjax']);
+      			Route::get('delete/{id}',['uses'=>'SoftwareController@getDeleteSoftwareAjax']);
+	    	});
+	    });
+    	
+	});
+	
 });

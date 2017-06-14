@@ -26,7 +26,7 @@ class AddUserRequest extends Request
         return [
             'txtfirstname' => 'required|min:3',
             'txtlastname' => 'required|min:3',
-            'txtusername' => 'required|min:5|unique:users,username'
+            'txtusername' => 'required|min:5|unique:users,username',
                         'txtpassword' => 'min:6',
             'txtrepassword' => 'same:txtpassword',
         ];

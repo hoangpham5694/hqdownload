@@ -19,8 +19,8 @@ class CategoryController extends Controller
     {
     	$numberRecord= $max;
         $vitri =($page -1 ) * $numberRecord;
-    	$cates = Category::leftJoin('video_cate','video_cate.cate_id','=','categories.id')
-    	->select('categories.id','categories.name','categories.slug',DB::raw('count(video_cate.id) as count_videos'))
+    	$cates = Category::leftJoin('softwares','softwares.cate_id','=','categories.id')
+    	->select('categories.id','categories.name','categories.slug',DB::raw('count(softwares.id) as count_softs'))
     //	->where('agencies.status','=','active')
     //	->where('courses.status','!=','delete')
     	->groupBy('categories.id')
@@ -37,6 +37,9 @@ class CategoryController extends Controller
     	$cate = new Category();
     	$cate->name = $request->catename;
         $cate->slug =str_slug($request->catename, "-");
+        if(Category::where('slug','=',$cate->slug)->count()>0){
+            return "Danh mục đã tồn tại";
+        }
     	$cate->save();
     	return "Thêm danh mục thành công";
     }
@@ -54,7 +57,7 @@ class CategoryController extends Controller
     	try{
     		DB::beginTransaction();
 			$cate = Category::findOrFail($id);
-			$videoCates = VideoCate::where('cate_id','=',$id)->delete();
+		//	$s = VideoCate::where('cate_id','=',$id)->delete();
 		//	dd($videoCates);
     		$cate->delete();
     		DB::commit();
