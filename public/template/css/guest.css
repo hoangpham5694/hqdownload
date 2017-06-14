@@ -1,0 +1,285 @@
+body{
+	    background: #666;
+    color: #000;
+    margin: 0;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+}
+.container{
+	max-width: 980px;
+    margin: 0 auto;
+    padding: 10px;
+    background: #fff;
+    overflow: hidden;
+}
+#header .logo{
+	float:left;
+
+    margin-right: 30px;
+}
+#header .logo a {
+    width: 250px;
+    display: block;
+    overflow: hidden;
+    text-indent: 9999px;
+    background: url(/template/images/logo.png) center top no-repeat;
+    height: 60px;
+}
+#header .search-box{
+	    margin-top: 12px;
+    float: left;
+}
+#header .search-box form{
+	    height: 30px;
+    line-height: 30px;
+    vertical-align: top;
+    display: inline-block;
+    border: 1px solid #357ae8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+#header .search-box form input[type=text]{
+	   background: url(/template/images/find.png) no-repeat 8px 8px #fff;
+    display: inline-block;
+    vertical-align: top;
+    height: 30px;
+    padding-left: 32px;
+    padding-right: 10px;
+    margin: 0;
+    width: 200px;
+    border: none;
+    border-radius: 0;
+    outline: 0;
+}
+#header .search-box form select{
+	margin: 0 -4px;
+    border-radius: 0;
+    display: inline-block;
+    width: 100px;
+    border: none;
+    height: 30px;
+    outline: none;
+    background: url(/template/images/SortDown.png) no-repeat right #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -moz-user-focus: none;
+        color: #888;
+        line-height: normal;
+}
+
+#header .search-box form input[type=submit]{
+    height: 30px;
+    vertical-align: top;
+    text-align: center;
+    background: #357ae8;
+    color: #fff;
+    width: 90px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 0;
+    margin: 0;
+    border: none;
+    outline: none;
+    -webkit-appearance: none
+}
+
+#main-nav .tabs{
+	border-bottom: 4px solid #02aeef;
+}
+#main-nav .tabs ul{
+	    position: relative;
+    line-height: 32px;
+    height: 32px;
+    margin: 0 0 2px 0;
+    padding:0;
+}
+#main-nav .tabs .navigation li.home-menu {
+    height: 32px;
+    width: 192px;
+    min-width: initial;
+    text-indent: 42px;
+    color: #fff;
+    background: #0072bc url(/template/images/menu-32.png) no-repeat 10px;
+    background-size: 20px;
+}
+#main-nav .tabs .navigation li a {
+    position: relative;
+    display: block;
+    padding: 0 5px;
+    color: #fff;
+    font-weight: bold;
+    border-right: 1px solid #fff;
+}
+#main-nav .tabs .navigation li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    min-width: 105px;
+    white-space: nowrap;
+    position: relative;
+    background: #02aeef;
+    list-style-type:none;
+}
+#main-nav .tabs .navigation li ul {
+    display: block;
+    list-style: none;
+    position: absolute;
+    padding: 0;
+    border: 1px solid #aaa;
+    background: #fff;
+    z-index: 999;
+    visibility: hidden;
+    opacity: 0;
+    -moz-transition: all .1s ease-in;
+    -o-transition: all .1s ease-in;
+    -webkit-transition: all .1s ease-in;
+    transition: all .1s ease-in;
+}
+#main-nav .tabs .navigation li.home-menu ul {
+    width: 190px;
+    height: auto;
+    position: relative;
+    border: 1px solid #aaa;
+    border-left-color: #eee;
+}
+#main-nav .tabs .navigation li.home-menu ul li {
+    padding: 0;
+    float: left;
+    display: block;
+    background: none;
+    width: 100%;
+}
+#main-nav .tabs .navigation li a img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    -moz-filter: brightness(0) invert(1);
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+}
+a, a:visited, a:hover {
+  
+    text-decoration: none;
+}
+.left-slidebar .leftnavigation {
+    margin-bottom: 10px;
+    font-size: 13px;
+    position: relative;
+    border: 1px solid #7ed6f6;
+    border-radius: 3px;
+    padding:0;
+}
+.left-slidebar .leftnavigation li:first-child, .leftnavigation li:last-child {
+    border-radius: 3px;
+}
+
+.left-slidebar .leftnavigation li {
+    position: relative;
+    border-bottom: 1px dotted #c2d1df;
+    list-style-type:none;
+}
+.left-slidebar .leftnavigation li a.first {
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    margin: 0;
+    padding: 5px 0;
+    border-bottom: none;
+    text-transform: uppercase;
+    background: #02aeef;
+}
+.left-slidebar .leftnavigation li a {
+    padding: 5px 5px 5px 5px;
+    display: block;
+    line-height: 24px;
+}
+.left-slidebar .leftnavigation li a img {
+    height: 24px;
+    width: 24px;
+    vertical-align: bottom;
+    position: absolute;
+    left: 4px;
+    filter: brightness(0) invert(1);
+}
+hr{
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.right-slidebar .topdownloads {
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 1px solid #02aeef;
+}
+.topdownloads .title {
+    text-align: center;
+    padding: 5px 0;
+    color: #fff;
+    font-weight: 700;
+    background: #02aeef;
+}
+.topdownloads .listbox-view .list-item:nth-child(odd) {
+    background: #fff;
+}
+.topdownloads .listbox-view .list-item:nth-child(even) {
+    background: #f8f8f8;
+}
+.topdownloads .listbox-view{
+	padding-left: 0;
+}
+.topdownloads .listbox-view .list-item {
+    display: block;
+    overflow: hidden;
+    padding: 5px 10px;
+}
+.topdownloads .listbox-view .list-item .list-item-title {
+    padding-left: 40px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 40px;
+    white-space: nowrap;
+}
+.topdownloads .listbox-view .list-item .list-item-title .title {
+    overflow: hidden;
+    width: 188px;
+    display: block;
+    text-transform: none;
+    text-align: left;
+    color: #0072bc;
+    font-weight: 100;
+    padding: 0;
+    background: none;
+}
+
+.topdownloads .title {
+    text-align: center;
+    padding: 5px 0;
+    color: #fff;
+    font-weight: 700;
+    background: #02aeef;
+}
+.topdownloads ul li div a.item-image {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    top: 5px;
+    left: 0;
+    overflow: hidden;
+    display: block;
+}
+.topdownloads .listbox-view .list-item .list-item-title .item-downloads {
+    top: 0;
+    position: absolute;
+    right: 0;
+    color: #faa61a;
+}
+.topdownloads .listbox-view .list-item .list-item-title .item-image img {
+    height: 28px;
+}
