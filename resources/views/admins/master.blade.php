@@ -60,7 +60,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{!! url('adminsites/account/profile') !!}"><i class="fa fa-user fa-fw"></i> Thông tin cá nhân</a>
                         </li>
-                        <li><a href="{!! url('adminsites/account/edit') !!}"><i class="fa fa-gear fa-fw"></i> Cập nhật thông tin</a>
+                        <li><a href="{!! url('adminsites/account/edit-profile') !!}"><i class="fa fa-gear fa-fw"></i> Cập nhật thông tin</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{!! url('logout') !!}"><i class="fa fa-sign-out fa-fw"></i> Đăng xuất</a>

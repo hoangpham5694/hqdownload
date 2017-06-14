@@ -53,7 +53,7 @@
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        {!! Auth::user()->firstname!!} 
+                        {!! Auth::user()->lastname!!}  {!! Auth::user()->firstname!!} 
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
@@ -80,7 +80,7 @@
                             <a href="{!! url('managersites') !!}"><i class="fa fa-dashboard fa-fw"></i> Trang chủ</a>
                         </li>
                          <li>
-                            <a href="{!! url('managersites/video/add') !!}">Thêm video</a>
+                            <a href="{!! url('managersites/software/add') !!}">Thêm software</a>
                         </li>
 
 
@@ -90,19 +90,13 @@
 
           
                              <li>
-                            <a href="{{ url('managersites/video/list') }}">
+                            <a href="{{ url('managersites/software/list') }}">
                            
-                                Danh sách video</a>
+                                Danh sách softwares</a>
            
                             <!-- /.nav-second-level -->
                         </li>
-                                                     <li>
-                            <a href="{{ url('managersites/video/checkprocess') }}">
-                           
-                                Check process</a>
-           
-                            <!-- /.nav-second-level -->
-                        </li>
+                                            
 
 
                     </ul>
@@ -147,7 +141,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo asset('template/dist/js/sb-admin-2.js') ; ?>"></script>
     <script src="<?php echo asset('app/lib/angular.min.js') ; ?>"></script>
-    <script src="<?php echo asset('app/app-admin.js') ; ?>"></script>   
+    <script src="<?php echo asset('app/app.js') ; ?>"></script>   
 @yield('footer')
 </body>
 
