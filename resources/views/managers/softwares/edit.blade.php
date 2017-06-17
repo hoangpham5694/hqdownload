@@ -10,10 +10,17 @@
 <div class="col-md-10" >
 	<form name="frmTeacher" id="selectizeForm" action="" method="POST" enctype="multipart/form-data"  class="form-horizontal">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+          <div class="form-group">
+      <label class="control-label col-sm-3" for="txtName">Tên:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control"  value="{{$software->name}}" required="true" name="txtName" id="txtName" placeholder="Vui lòng nhập tiêu đề">
+
+      </div>
+    </div>
     <div class="form-group">
       <label class="control-label col-sm-3" for="txtTitle">Tiêu đề:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control" value="{{$software->name}}" required="true" name="txtTitle" id="txtTitle" placeholder="Vui lòng nhập tiêu đề">
+        <input type="text" class="form-control" value="{{$software->title}}" required="true" name="txtTitle" id="txtTitle" placeholder="Vui lòng nhập tiêu đề">
 
       </div>
     </div>
@@ -49,7 +56,7 @@
       <select class="form-control" name="sltSystem" id="sltSystem">
          
           @foreach($systems as $system)
-           @if($cate->id == $software->cate_id)
+           @if($system->id == $software->system_id)
                 <option selected value="{{$system->id}}">{{$system->name}}</option>
             @else
                <option value="{{$system->id}}">{{$system->name}}</option>
@@ -117,19 +124,19 @@
     <div class="form-group">
   <label class="control-label col-sm-3" for="txtCrackLink">Link tải crack:</label>
     <div class="col-sm-9">
-      <input type="url" name="txtCrackLink" class="form-control" value="{{$software->crack_link}}" required="true" id="txtCrackLink"  placeholder="">
+      <input type="url" name="txtCrackLink" class="form-control" value="{{$software->crack_link}}"  id="txtCrackLink"  placeholder="">
     </div>
   </div>
       <div class="form-group">
   <label class="control-label col-sm-3" for="txtPublisherName">Tên Nhà phát hành:</label>
     <div class="col-sm-9">
-      <input type="text" name="txtPublisherName" class="form-control" value="{{$software->publisher_name}}" required="true" id="txtPublisherName"  placeholder="">
+      <input type="text" name="txtPublisherName" class="form-control" value="{{$software->publisher_name}}"  id="txtPublisherName"  placeholder="">
     </div>
   </div>
       <div class="form-group">
   <label class="control-label col-sm-3" for="txtPublisherUrl">Url Nhà phát hành:</label>
     <div class="col-sm-9">
-      <input type="url" name="txtPublisherUrl" class="form-control" value="{{$software->publisher_url}}" required="true" id="txtPublisherUrl"  placeholder="">
+      <input type="url" name="txtPublisherUrl" class="form-control" value="{{$software->publisher_url}}"  id="txtPublisherUrl"  placeholder="">
     </div>
   </div>
   <div class="form-group">
@@ -189,7 +196,18 @@
       }
     }
   });
+  $('#txtTags').selectize({
 
+    delimiter: ',',
+    persist: false,
+
+    create: function(input) {
+      return {
+        value: input,
+        text: input
+      }
+    }
+  });
 </script>
 
 <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>

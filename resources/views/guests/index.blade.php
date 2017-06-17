@@ -3,11 +3,10 @@
 
 @endsection
 @section('content')
-<div id="hometopview">
+<div id="hometopview" data-ng-init="getHighestViewSoftware();">
         <a class="title" href="/avast-free-antivirus/download">
-            Avast Free Antivirus 2017 
-                                <em>17.4</em>
-                            <i>Phần mềm diệt virus miễn phí</i>
+     {%highestViewSoftware.name%} 
+     <i> {%highestViewSoftware.title%} </i>
 </a>
         
 
@@ -16,47 +15,308 @@
             <img src="//i.dowload.vn/data/image/2017/01/17/box-avast-free-antivirus.png" alt="Avast Free Antivirus 2017"></a>
         <div class="publisher-info">
             <span>Phát hành bởi <b>
-                <a href="/publisher/AVAST+Software/index.aspx">AVAST Software</a>
+                <a href="/publisher/AVAST+Software/index.aspx">{%highestViewSoftware.publisher_name%} </a>
             </b></span>
         </div>
             <div class="briefinfo">
-                Avast Free Antivirus là một phần mềm diệt virus hoàn toàn miễn phí. Mặc dù là một phần mềm miễn phí nhưng những tính năng của Avast Free Antivirus không hề thua kém những phần mềm diệt virus mất phí.
+               {%highestViewSoftware.description%} 
             </div>
-        <div class="rating-icon">
-            <span class="average-rating-stars average-rating-stars-4"></span>
-            <span class="votes">2847</span>
-        </div>
+            <div class="clearfix"></div>
+
             <div class="downloadtimes">
                 <label>
                     Lượt tải:
                 </label>
-                3.550.531
+                {%highestViewSoftware.downloaded%} 
             </div>
                     <div class="operationsystems">
                 <label>
                     Phiên bản:
                 </label>
-                <span>17.4.3482</span>
+                <span>{%highestViewSoftware.version%} </span>
             </div>
                     <div class="operationsystems">
                 <label>
                     Yêu cầu:
                 </label>
-                <span>Windows XP/Vista/7/8/8.1/10</span>
+                <span>{%highestViewSoftware.system_require%}</span>
             </div>
                     <div class="tags">
                 <label>
                     Tìm thêm:
                 </label>
-                            <a href="/timkiem/avast+Free+Antivirus/index.aspx">avast Free Antivirus</a>
-            <a href="/timkiem/download+avast+Free+Antivirus/index.aspx">download avast Free Antivirus</a>
-            <a href="/timkiem/t%E1%BA%A3i+avast+Free+Antivirus/index.aspx">tải avast Free Antivirus</a>
-            <a href="/timkiem/ph%E1%BA%A7n+m%E1%BB%81m+di%E1%BB%87t+virus+mi%E1%BB%85n+ph%C3%AD/index.aspx">phần mềm diệt virus miễn phí</a>
-            <a href="/timkiem/ng%C4%83n+ch%E1%BA%B7n+virus/index.aspx">ngăn chặn virus</a>
+
+
+                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% highestViewSoftware.tags.split(',')[n]%}</a>
+
 
 
             </div>  
+</div>
+<div class="tab-softs">
+	 <ul class="nav nav-pills nav-justified">
+    <li class="active"><a data-toggle="tab" href="#new">Phần mềm mới</a></li>
+    <li><a data-toggle="tab" href="#last-update">Mới cập nhật</a></li>
+    <li><a data-toggle="tab" href="#menu2">Đưọc đề xuất</a></li>
+
+  </ul>
+
+  <div class="tab-content">
+    <div id="new" class="tab-pane fade in active">
+    
+		<div class="list-softs" data-ng-init="getListNewestSoftwares(0,10);">
+			<div class="item clearfix" ng-repeat="software in highestViewSoftwares">
+                <h2 class="title">
+                    <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    <a class="title" href="/neighbours-from-hell/download"><b>{%software.name%}</b></a> 
+                    <i>{%software.title%}</i>
+                </h2>
+                <div class="item-info">
+                    <a class="item-image" href="/neighbours-from-hell/download">
+                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    </a>
+
+                    <div class="publisher-info">
+                    	<ul>
+                    		<li class="publisher-info">
+                                <span class="item-label">Phát hành:</span>
+                                <a class="item-info" href="">
+                                    {%software.publisher_name%}
+                                </a>
+                            </li>
+                            <li class="clearfix"></li>
+                        <li class="brief-info">
+                               {%software.description%}
+                        </li>
+                    	</ul>
+                    </div>
+                    <div class="list-item-plus">
+                    	<ul class="specs-info">
+                    	<li class="download-info">
+                    		<a href="/neighbours-from-hell/download" class="download-button">
+                    			<span>Tải về</span>
+                    		</a>
+                    	</li>
+
+                    </ul>
+                </div>
+
+
+                    <div class="clearfix">
+                    </div>
+                    <ul class="specs-info">
+
+                    	<li class="downloads-info">
+                    		<span class="item-label">Lượt tải:</span>
+                    		<span class="item-info">{%software.downloaded%}</span>
+                    	</li>
+
+                        <li class="version-info">
+                      
+   <span class="item-label">Version:</span>
+                                <span class="item-info">   {%software.version%}</span>
+                        </li>
+
+
+                            <li class="filesize-info">
+                                <span class="item-label">Dung lượng:</span>
+                                <span class="item-info">   {%software.size%}</span>
+                            </li>
+
+                            <li class="requirements-info">
+                                <span class="item-label">Yêu cầu:</span>
+                                <span class="item-info">{%software.system_require%}</span>
+                            </li>
+                                                    <li class="tags">
+                                <span class="item-label">Tìm thêm:</span>
+                                <span class="item-info">
+                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                </span>
+                            </li>
+                    </ul>
+                </div>
+    
+            </div>
+
+		</div>
+
+
+
     </div>
+    <div id="last-update" class="tab-pane fade">
+     
+    <div class="list-softs" data-ng-init="getListLastUpdateSoftwares(0,10);">
+            <div class="item clearfix" ng-repeat="software in listLastUpdateSoftwares">
+                <h2 class="title">
+                    <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    <a class="title" href="/neighbours-from-hell/download"><b>{%software.name%}</b></a> 
+                    <i>{%software.title%}</i>
+                </h2>
+                <div class="item-info">
+                    <a class="item-image" href="/neighbours-from-hell/download">
+                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    </a>
+
+                    <div class="publisher-info">
+                        <ul>
+                            <li class="publisher-info">
+                                <span class="item-label">Phát hành:</span>
+                                <a class="item-info" href="">
+                                    {%software.publisher_name%}
+                                </a>
+                            </li>
+                            <li class="clearfix"></li>
+                        <li class="brief-info">
+                               {%software.description%}
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="list-item-plus">
+                        <ul class="specs-info">
+                        <li class="download-info">
+                            <a href="/neighbours-from-hell/download" class="download-button">
+                                <span>Tải về</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                    <div class="clearfix">
+                    </div>
+                    <ul class="specs-info">
+
+                        <li class="downloads-info">
+                            <span class="item-label">Lượt tải:</span>
+                            <span class="item-info">{%software.downloaded%}</span>
+                        </li>
+
+                        <li class="version-info">
+                      
+   <span class="item-label">Version:</span>
+                                <span class="item-info">   {%software.version%}</span>
+                        </li>
+
+
+                            <li class="filesize-info">
+                                <span class="item-label">Dung lượng:</span>
+                                <span class="item-info">   {%software.size%}</span>
+                            </li>
+
+                            <li class="requirements-info">
+                                <span class="item-label">Yêu cầu:</span>
+                                <span class="item-info">{%software.system_require%}</span>
+                            </li>
+                                                    <li class="tags">
+                                <span class="item-label">Tìm thêm:</span>
+                                <span class="item-info">
+                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                </span>
+                            </li>
+                    </ul>
+                </div>
+    
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+    <div id="menu2" class="tab-pane fade">
+    
+    <div class="list-softs" data-ng-init="getListRandomSoftwares(10,'','');">
+            <div class="item clearfix" ng-repeat="software in listRandomSoftwares">
+                <h2 class="title">
+                    <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    <a class="title" href="/neighbours-from-hell/download"><b>{%software.name%}</b></a> 
+                    <i>{%software.title%}</i>
+                </h2>
+                <div class="item-info">
+                    <a class="item-image" href="/neighbours-from-hell/download">
+                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                    </a>
+
+                    <div class="publisher-info">
+                        <ul>
+                            <li class="publisher-info">
+                                <span class="item-label">Phát hành:</span>
+                                <a class="item-info" href="">
+                                    {%software.publisher_name%}
+                                </a>
+                            </li>
+                            <li class="clearfix"></li>
+                        <li class="brief-info">
+                               {%software.description%}
+                        </li>
+                        </ul>
+                    </div>
+                    <div class="list-item-plus">
+                        <ul class="specs-info">
+                        <li class="download-info">
+                            <a href="/neighbours-from-hell/download" class="download-button">
+                                <span>Tải về</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+                    <div class="clearfix">
+                    </div>
+                    <ul class="specs-info">
+
+                        <li class="downloads-info">
+                            <span class="item-label">Lượt tải:</span>
+                            <span class="item-info">{%software.downloaded%}</span>
+                        </li>
+
+                        <li class="version-info">
+                      
+   <span class="item-label">Version:</span>
+                                <span class="item-info">   {%software.version%}</span>
+                        </li>
+
+
+                            <li class="filesize-info">
+                                <span class="item-label">Dung lượng:</span>
+                                <span class="item-info">   {%software.size%}</span>
+                            </li>
+
+                            <li class="requirements-info">
+                                <span class="item-label">Yêu cầu:</span>
+                                <span class="item-info">{%software.system_require%}</span>
+                            </li>
+                                                    <li class="tags">
+                                <span class="item-label">Tìm thêm:</span>
+                                <span class="item-info">
+                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                </span>
+                            </li>
+                    </ul>
+                </div>
+    
+            </div>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+</div>
+
+
 @endsection
 @section('footer')
 

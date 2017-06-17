@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="my-app">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
    <link href="<?php echo asset('template/css/guest.css') ; ?>" rel="stylesheet" type="text/css">
        @yield('header')
 </head>
-<body>
+<body ng-controller="GuestController">
 <div class="container">
 	<div id="header">
 		<div class="logo">
@@ -103,6 +103,12 @@
 <div id="footer">
 	
 </div>
+    <script src="<?php echo asset('template/vendor/jquery/jquery.min.js') ; ?>"></script>
+    <script src="<?php echo asset('template/vendor/bootstrap/js/bootstrap.min.js') ; ?>"></script>
+        <script src="<?php echo asset('app/lib/angular.min.js') ; ?>"></script>
+    <script src="<?php echo asset('app/app.js') ; ?>"></script>   
+    <script src="<?php echo asset('app/controller/guests/GuestController.js') ; ?>"></script>  
 @yield('footer')
+
 </body>
 </html>

@@ -10,10 +10,17 @@
 <div class="col-md-10" >
 	<form name="frmTeacher" id="selectizeForm" action="" method="POST" enctype="multipart/form-data"  class="form-horizontal">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <div class="form-group">
+      <label class="control-label col-sm-3" for="txtName">Tên:</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control"  required="true" name="txtName" id="txtName" placeholder="Vui lòng nhập tiêu đề">
+
+      </div>
+    </div>
     <div class="form-group">
       <label class="control-label col-sm-3" for="txtTitle">Tiêu đề:</label>
       <div class="col-sm-9">
-        <input type="text" class="form-control"  required="true" name="txtTitle" id="txtTitle" placeholder="Vui lòng nhập tiêu đề">
+        <input type="text" class="form-control"  name="txtTitle" id="txtTitle" placeholder="Vui lòng nhập tiêu đề">
 
       </div>
     </div>
@@ -107,19 +114,19 @@
     <div class="form-group">
   <label class="control-label col-sm-3" for="txtCrackLink">Link tải crack:</label>
     <div class="col-sm-9">
-      <input type="url" name="txtCrackLink" class="form-control" required="true" id="txtCrackLink"  placeholder="">
+      <input type="url" name="txtCrackLink" class="form-control"  id="txtCrackLink"  placeholder="">
     </div>
   </div>
       <div class="form-group">
   <label class="control-label col-sm-3" for="txtPublisherName">Tên Nhà phát hành:</label>
     <div class="col-sm-9">
-      <input type="text" name="txtPublisherName" class="form-control" required="true" id="txtPublisherName"  placeholder="">
+      <input type="text" name="txtPublisherName" class="form-control" id="txtPublisherName"  placeholder="">
     </div>
   </div>
       <div class="form-group">
   <label class="control-label col-sm-3" for="txtPublisherUrl">Url Nhà phát hành:</label>
     <div class="col-sm-9">
-      <input type="url" name="txtPublisherUrl" class="form-control" required="true" id="txtPublisherUrl"  placeholder="">
+      <input type="url" name="txtPublisherUrl" class="form-control"  id="txtPublisherUrl"  placeholder="">
     </div>
   </div>
   <div class="form-group">
