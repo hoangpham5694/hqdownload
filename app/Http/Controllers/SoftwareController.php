@@ -29,7 +29,8 @@ class SoftwareController extends Controller
    	public function postAddSoftwareManager(Request $request)
    	{
    		$software = new Software();
-   		$software->name= $request->txtTitle;
+   		$software->name= $request->txtName;
+      $software->title= $request->txtTitle;
    		$software->slug = str_slug($request->txtTitle, "-");
    		$software->version = $request->txtVersion;
    		$software->size = $request->txtSize;
@@ -76,10 +77,11 @@ class SoftwareController extends Controller
    		$cates = Category::get();
    		return view('managers.softwares.edit',['software'=>$software,'systems'=>$systems,'cates'=>$cates]);
    	}
-	public function postEditSoftwareManager($id, Request $request)
+	 public function postEditSoftwareManager($id, Request $request)
    	{
    		$software = Software::findOrFail($id);
-   		$software->name= $request->txtTitle;
+      $software->name= $request->txtName;
+      $software->title= $request->txtTitle;
    		$software->slug = str_slug($request->txtTitle, "-");
    		$software->version = $request->txtVersion;
    		$software->size = $request->txtSize;
@@ -241,5 +243,82 @@ class SoftwareController extends Controller
 	{
 		return Software::count();
 	}
+  public function getMostDownloadSoftwareAjax($number=10)
+  {
+      $softwares = Software::select('name','view','downloaded','title','image')
+      ->where('status','=','active')
+      ->orderBy('downloaded','DESC')
+      ->limit($number)
+      ->get();
+      return json_encode($softwares);
+  }
+  public function getHighestViewSoftwareInCateAjax($cateid=0)
+  {
+    if($cateid ==0){
+      $softwares = Software::
+      select('name','view','downloaded','title','version','image','description', 'system_require','tags','publisher_name','publisher_url')
+      ->where('status','=','active')
 
+      ->orderBy('view','DESC')
+       ->first();
+      return json_encode($softwares);
+    }
+    $softwares = Software::
+      select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      ->where('status','=','active')
+      ->where('cate_id','=',$cateid)
+      ->orderBy('view','DESC')
+      ->first();
+      return json_encode($softwares);
+  }
+  public function getListNewestSoftwareAjax($offset=0,$max=10)
+  {
+      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      ->where('status','=','active')
+      ->orderBy('id','DESC')
+      ->limit($max)
+      ->offset($offset)
+      ->get();
+      return json_encode($softwares);
+  }
+  public function getListLastUpdateAjax($offset=0,$max=10)
+  {
+      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      ->where('status','=','active')
+      ->orderBy('updated_at','DESC')
+      ->limit($max)
+      ->offset($offset)
+      ->get();
+      return json_encode($softwares);
+  }
+  public function getListRandomAjax(Request $request, $max=10)
+  {
+    $cateid= $request->cateid;
+    $sysid = $request->sysid;
+    if($cateid =="") $cateid=null;
+    if($sysid =="") $sysid=null;
+    $software = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+    ->where('status','=','active')
+    ->where('cate_id','LIKE',$cateid)
+    ->where('system_id','LIKE',$sysid)
+    ->inRandomOrder()
+    ->limit($max)
+    ->get();
+    return json_encode($software);
+  }
+  public function getListSoftwareWithCateAjax( $max, $page,Request $request)
+  {
+    $numberRecord= $max;
+    $vitri =($page -1 ) * $numberRecord;
+    $orderBy = $request->orderby;
+    $cateId = $request->cateid;
+    $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      ->where('status','=','active')
+      ->where('cate_id','=',$cateId)
+      ->orderBy($orderBy,'DESC')
+      ->limit($numberRecord)
+      ->offset($vitri)
+      ->get();
+      return json_encode($softwares);
+  }
 }

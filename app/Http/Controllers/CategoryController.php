@@ -68,4 +68,11 @@ class CategoryController extends Controller
 			return "Lỗi trong quá trình thực hiện";
     	}
     }
+    public function getListCateAjax()
+    {
+        $cates = Category::get();
+        return json_decode($cates);
+    }
+
+    
 }

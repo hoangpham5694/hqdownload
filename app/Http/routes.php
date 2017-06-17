@@ -14,6 +14,27 @@
 Route::get('/', function () {
     return view('guests/index');
 });
+Route::get('danh-muc/{cateslug}.{cateid}',['uses'=>'HomeController@getListSoftwareSWithCate']);
+Route::group(['prefix' => 'api'], function(){
+	Route::group(['prefix' => 'system'], function(){
+		Route::get('list-systems',['uses'=>'SystemController@getListSystemAjax']);
+	});
+	Route::group(['prefix' => 'category'], function(){
+		Route::get('list-cates',['uses'=>'CategoryController@getListCateAjax']);
+	});
+	Route::group(['prefix' => 'software'], function(){
+		Route::get('most-download/{number?}',['uses'=>'SoftwareController@getMostDownloadSoftwareAjax']);
+		Route::get('highest-view-in-cate/{cateid?}',['uses'=>'SoftwareController@getHighestViewSoftwareInCateAjax']);
+		Route::get('list-newest/{offset?}/{max?}',['uses'=>'SoftwareController@getListNewestSoftwareAjax']);
+		Route::get('list-last-update/{offset?}/{max?}',['uses'=>'SoftwareController@getListLastUpdateAjax']);
+		Route::get('list-random/{max?}',['uses'=>'SoftwareController@getListRandomAjax']);
+		Route::get('list-with-cate/{max}/{page}',['uses'=>'SoftwareController@getListSoftwareWithCateAjax']);
+
+	});
+	
+
+});
+
 
 Route::get('login',['uses'=>'LoginController@getLogin']);
 Route::post('login',['as'=>'getLogin','uses'=>'LoginController@postLogin']);

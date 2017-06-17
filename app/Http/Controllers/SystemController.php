@@ -16,7 +16,7 @@ class SystemController extends Controller
     {
     	$numberRecord= $max;
         $vitri =($page -1 ) * $numberRecord;
-    	$systems = System::leftJoin('softwares','softwares.cate_id','=','systems.id')
+    	$systems = System::leftJoin('softwares','softwares.system_id','=','systems.id')
     	->select('systems.id','systems.name','systems.slug',DB::raw('count(softwares.id) as count_softs'))
     //	->where('agencies.status','=','active')
     //	->where('courses.status','!=','delete')
