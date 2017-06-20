@@ -429,10 +429,7 @@ hr{
 .center-content .tab-softs .list-softs .item .item-info ul{
 	margin:0;
 }
-a, a:visited {
-    color: #0072bc;
-    text-decoration: none;
-}
+
 
 .download-button {
     text-transform: uppercase;
@@ -518,3 +515,113 @@ a, a:visited {
     border-color: transparent transparent #fff transparent;
 }
 
+.detail-title {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    padding: 0 10px 5px;
+    margin-top:0;
+}
+.detail-title i {
+    font-size: 17px;
+    display: block;
+    color: #666;
+    font-weight: 100;
+    font-style: normal;
+    float: right;
+    line-height: 35px;
+    margin-left: 5px;
+}
+.detail-title img {
+    max-height: 30px;
+    max-width: 110px;
+    vertical-align: middle;
+    padding-right: 10px;
+}
+.detail-info ul li{
+    list-style-type: none;
+}
+.detail-info ul li span.item-label{
+    width:100px;
+    display: inline-block;
+}
+.detail-content h2.name{
+        font-size: 1.5em;
+    color: #45710a;
+    margin: 10px 0;
+}
+.detail-content h2,.detail-content h1,.detail-content h3,.detail-content h4,.detail-content h5{
+    font-weight: bold;
+}
+.detail-content h1{
+    font-size:26px;
+}
+.detail-content h2{
+    font-size:20px;
+}
+.detail-content h3{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size:17px;
+}
+.detail-content h4{
+    font-size:15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.detail-content h5{
+    font-size:12px;
+}
+.detail-content img{
+    width:100%;
+    height: auto;
+}
+.detail-download a{
+    text-transform: uppercase;
+    margin: 0 auto;
+    font-weight: 700;
+    text-align: center;
+    display: block;
+    line-height: 30px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px #aaa;
+    color: #fff;
+    width: 70%;
+    border: solid 1px #357ae8;
+    background: #64991e;
+    background: -webkit-gradient(linear,left top,left bottom,from(#02aeef),to(#357ae8));
+}
+.detail-relatedsoftwares {
+    font-size: 13px;
+    margin-top: 10px;
+}
+.detail-relatedsoftwares ul{
+    padding-left:0;
+}
+.detail-relatedsoftwares ul li{
+    list-style-type:none;
+}
+.detail-relatedsoftwares li a {
+    font-size: 14px;
+}
+.detail-relatedsoftwares img {
+    vertical-align: middle;
+    height: 20px;
+    padding-right: 5px;
+}
+.detail-relatedsoftwares h3{
+    font-size:16px;
+    font-weight: bold;
+}
+.detail-relatedsoftwares li a i {
+    font-size: 13px;
+    font-style: normal;
+    color: #888;
+}
+.detail-relatedsoftwares li a em {
+    font-style: normal;
+    float: right;
+    text-transform: lowercase;
+    font-weight: 700;
+}

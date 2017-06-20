@@ -24,8 +24,8 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
   		}) ;
 		
 	 };
-	$scope.getHighestViewSoftware = function (cateId){
-		var url = API + 'api/software/highest-view-in-cate/'+cateId;
+	$scope.getHighestViewSoftware = function (sysId){
+		var url = API + 'api/software/highest-view-in-system/'+sysId;
 			$http.get(url).then(function successCallback (response){		
 			$scope.highestViewSoftware = response.data;
 
@@ -39,9 +39,10 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
   		}) ;
 		
 	 };
-	 $scope.getListNewestSoftwares = function (offset,max){
-		var url = API + 'api/software/list-newest/'+offset+'/'+max;
-			$http.get(url).then(function successCallback (response){		
+	 $scope.getListNewestSoftwares = function (offset,max,cateid,systemid){
+		var url = API + 'api/software/list-newest/'+offset+'/'+max+"?cateid="+cateid+"&sysid="+systemid;
+		console.log(url);
+		$http.get(url).then(function successCallback (response){		
 			$scope.highestViewSoftwares = response.data;
 
 			console.log($scope.highestViewSoftwares);
@@ -53,9 +54,9 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
   		}) ;
 		
 	 };
-	$scope.getListLastUpdateSoftwares = function (offset,max){
-		var url = API + 'api/software/list-last-update/'+offset+'/'+max;
-			$http.get(url).then(function successCallback (response){		
+	$scope.getListLastUpdateSoftwares = function (offset,max,cateid,systemid){
+		var url = API + 'api/software/list-last-update/'+offset+'/'+max+"?cateid="+cateid+"&sysid="+systemid;
+		$http.get(url).then(function successCallback (response){		
 			$scope.listLastUpdateSoftwares = response.data;
 
 			console.log();
@@ -83,16 +84,18 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
   		}) ;
 		
 	 };
-	$scope.getListSoftwaresWithCate = function (max,page,cateid,order){
+	$scope.maxSoftwaresWithCate = 10;
+	$scope.getListSoftwaresWithCate = function (page,cateid,order){
 		$scope.cateid = cateid;
 		$scope.order= order;
-		var url = API + 'api/software/list-with-cate/'+max+'/'+page+'?cateid='+$scope.cateid+'&orderby='+$scope.order;
+		$scope.pageListSoftwaresWithCate = page;
+		var url = API + 'api/software/list-with-cate/'+$scope.maxSoftwaresWithCate+'/'+page+'?cateid='+$scope.cateid+'&orderby='+$scope.order;
 
 		console.log(url);
 			$http.get(url).then(function successCallback (response){		
-			$scope.listSoftwaresWithCate = response.data;
-
-			console.log(response.data);
+			$scope.listSoftwaresWithCate = response.data.softwares;
+			$scope.totalSoftwareWithCate = response.data.total  /$scope.maxSoftwaresWithCate +1;
+			//console.log(response.data);
 	
 		}  , function errorCallback(response) {
 			console.log(response);
