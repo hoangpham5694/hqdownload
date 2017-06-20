@@ -3,7 +3,7 @@
 
 @endsection
 @section('content')
-<div id="hometopview" data-ng-init="getHighestViewSoftware();">
+<div id="hometopview" data-ng-init="getHighestViewSoftware({{$system->id}});">
         <a class="title" href="/avast-free-antivirus/download">
      {%highestViewSoftware.name%} 
      <i> {%highestViewSoftware.title%} </i>
@@ -12,7 +12,7 @@
 
 
         <a href="/avast-free-antivirus/download">
-            <img ng-src="{{asset('upload/images/128x128')}}/{%highestViewSoftware.image%}" alt="Avast Free Antivirus 2017"></a>
+            <img src="//i.dowload.vn/data/image/2017/01/17/box-avast-free-antivirus.png" alt="Avast Free Antivirus 2017"></a>
         <div class="publisher-info">
             <span>Phát hành bởi <b>
                 <a href="/publisher/AVAST+Software/index.aspx">{%highestViewSoftware.publisher_name%} </a>
@@ -64,7 +64,7 @@
   <div class="tab-content">
     <div id="new" class="tab-pane fade in active">
     
-		<div class="list-softs" data-ng-init="getListNewestSoftwares(0,10,'','');">
+		<div class="list-softs" data-ng-init="getListNewestSoftwares(0,10,'',{{$system->id}});">
 			<div class="item clearfix" ng-repeat="software in highestViewSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -145,7 +145,7 @@
     </div>
     <div id="last-update" class="tab-pane fade">
      
-    <div class="list-softs" data-ng-init="getListLastUpdateSoftwares(0,10,'','');">
+    <div class="list-softs" data-ng-init="getListLastUpdateSoftwares(0,10,'',{{$system->id}});">
             <div class="item clearfix" ng-repeat="software in listLastUpdateSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -229,7 +229,7 @@
     </div>
     <div id="menu2" class="tab-pane fade">
     
-    <div class="list-softs" data-ng-init="getListRandomSoftwares(10,'','');">
+    <div class="list-softs" data-ng-init="getListRandomSoftwares(10,'',{{$system->id}});">
             <div class="item clearfix" ng-repeat="software in listRandomSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">

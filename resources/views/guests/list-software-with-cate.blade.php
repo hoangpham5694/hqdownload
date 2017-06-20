@@ -3,13 +3,14 @@
 
 @endsection
 @section('content')
+
 <div class="list-options">
-                <span id="OrderBy">Sắp xếp theo:</span>
-                <a href="" ng-click="getListSoftwaresWithCate(10,1,{{$cateId}},'id');" ng-class="{selected: order=='id'}">Phần mềm mới nhất</a>
-                <a href=""  ng-click="getListSoftwaresWithCate(10,1,{{$cateId}},'downloaded');" ng-class="{selected: order=='downloaded'}"> Tải nhiều nhất</a>
+                <span id="OrderBy">{{$cate->name}}:</span>
+                <a href="" ng-click="getListSoftwaresWithCate(1,{{$cate->id}},'id');" ng-class="{selected: order=='id'}">Phần mềm mới nhất</a>
+                <a href=""  ng-click="getListSoftwaresWithCate(1,{{$cate->id}},'downloaded');" ng-class="{selected: order=='downloaded'}"> Tải nhiều nhất</a>
 </div>
 
-            <div class="list-softs" data-ng-init="getListSoftwaresWithCate(10,1,{{$cateId}},'downloaded');">
+            <div class="list-softs" data-ng-init="getListSoftwaresWithCate(1,{{$cate->id}},'downloaded');">
             <div class="item clearfix" ng-repeat="software in listSoftwaresWithCate">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -85,7 +86,12 @@
 
         </div>
 
+<div class="pagination-container">
 
+   <button type="button" ng-repeat="n in [1,totalSoftwareWithCate] | makeRange" ng-click="getListSoftwaresWithCate(n,{{$cate->id}},order)"  class="btn btn-default" ng-disabled="pageListSoftwaresWithCate == n">{% n %}</button>
+
+
+</div>
 
 
 

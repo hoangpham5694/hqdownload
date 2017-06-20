@@ -160,7 +160,7 @@
   <div class="form-group">
     <label class="control-label col-sm-3" for="txtTags">Tags:</label>
     <div class="col-sm-9">
-      <input type="text" class="demo-default selectized" name="txtTags"   id="txtTags"  placeholder="">
+      <input type="text" class="demo-default selectized" name="txtTags" value="{{$software->tags}}"  id="txtTags"  placeholder="">
 
 
     </div>
