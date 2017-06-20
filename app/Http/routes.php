@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('guests/index');
 });
 Route::get('danh-muc/{cateslug}.{cateid}',['uses'=>'HomeController@getListSoftwareSWithCate']);
+Route::get('he-dieu-hanh/{systemslug}.{systemid}',['uses'=>'HomeController@getListSoftwaresWithSystem']);
+Route::get('{softwareslug}.{softwareid}.html',['uses'=>'HomeController@getDetailSoftware']);
+Route::get('download/{softwareslug}.{softwareid}.html',['uses'=>'HomeController@getDownloadSoftware']);
 Route::group(['prefix' => 'api'], function(){
 	Route::group(['prefix' => 'system'], function(){
 		Route::get('list-systems',['uses'=>'SystemController@getListSystemAjax']);
@@ -24,12 +27,12 @@ Route::group(['prefix' => 'api'], function(){
 	});
 	Route::group(['prefix' => 'software'], function(){
 		Route::get('most-download/{number?}',['uses'=>'SoftwareController@getMostDownloadSoftwareAjax']);
-		Route::get('highest-view-in-cate/{cateid?}',['uses'=>'SoftwareController@getHighestViewSoftwareInCateAjax']);
+		Route::get('highest-view-in-system/{sysid?}',['uses'=>'SoftwareController@getHighestViewSoftwareInsystemAjax']);
 		Route::get('list-newest/{offset?}/{max?}',['uses'=>'SoftwareController@getListNewestSoftwareAjax']);
 		Route::get('list-last-update/{offset?}/{max?}',['uses'=>'SoftwareController@getListLastUpdateAjax']);
 		Route::get('list-random/{max?}',['uses'=>'SoftwareController@getListRandomAjax']);
 		Route::get('list-with-cate/{max}/{page}',['uses'=>'SoftwareController@getListSoftwareWithCateAjax']);
-
+		//Route::get('total-with-cate/{cateid}',['uses'=>'SoftwareController@getTotalSoftwareWithCateAjax']);
 	});
 	
 

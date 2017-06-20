@@ -252,9 +252,9 @@ class SoftwareController extends Controller
       ->get();
       return json_encode($softwares);
   }
-  public function getHighestViewSoftwareInCateAjax($cateid=0)
+  public function getHighestViewSoftwareInSystemAjax($sysid=0)
   {
-    if($cateid ==0){
+    if($sysid ==0){
       $softwares = Software::
       select('name','view','downloaded','title','version','image','description', 'system_require','tags','publisher_name','publisher_url')
       ->where('status','=','active')
@@ -266,25 +266,37 @@ class SoftwareController extends Controller
     $softwares = Software::
       select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
       ->where('status','=','active')
-      ->where('cate_id','=',$cateid)
+      ->where('system_id','=',$sysid)
       ->orderBy('view','DESC')
       ->first();
       return json_encode($softwares);
   }
-  public function getListNewestSoftwareAjax($offset=0,$max=10)
+  public function getListNewestSoftwareAjax($offset=0,$max=10, Request $request)
   {
+      $cateid= $request->cateid;
+      $sysid = $request->sysid;
+      if($cateid =="") $cateid=null;
+      if($sysid =="") $sysid=null;
       $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
       ->where('status','=','active')
+      ->where('cate_id','LIKE',$cateid)
+      ->where('system_id','LIKE',$sysid)
       ->orderBy('id','DESC')
       ->limit($max)
       ->offset($offset)
       ->get();
       return json_encode($softwares);
   }
-  public function getListLastUpdateAjax($offset=0,$max=10)
+  public function getListLastUpdateAjax($offset=0,$max=10,Request $request)
   {
+      $cateid= $request->cateid;
+      $sysid = $request->sysid;
+      if($cateid =="") $cateid=null;
+      if($sysid =="") $sysid=null;
       $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
       ->where('status','=','active')
+      ->where('cate_id','LIKE',$cateid)
+      ->where('system_id','LIKE',$sysid)
       ->orderBy('updated_at','DESC')
       ->limit($max)
       ->offset($offset)
@@ -298,7 +310,7 @@ class SoftwareController extends Controller
     if($cateid =="") $cateid=null;
     if($sysid =="") $sysid=null;
     $software = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
-    ->where('status','=','active')
+     ->where('status','=','active') 
     ->where('cate_id','LIKE',$cateid)
     ->where('system_id','LIKE',$sysid)
     ->inRandomOrder()
@@ -319,6 +331,8 @@ class SoftwareController extends Controller
       ->limit($numberRecord)
       ->offset($vitri)
       ->get();
-      return json_encode($softwares);
+      return json_encode(['softwares'=>$softwares,'total'=>Software::where('status','=','active')
+      ->where('cate_id','=',$cateId)->count()]);
   }
+  
 }
