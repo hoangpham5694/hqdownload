@@ -104,6 +104,21 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
   		}) ;
 		
 	 };
+	 $scope.getListSystems = function (){
 
+		var url = API + 'api/system/list-systems';
+		console.log(url);
+			$http.get(url).then(function successCallback (response){		
+			$scope.listSystems = response.data;
+
+			//console.log(response.data);
+	
+		}  , function errorCallback(response) {
+			console.log(response);
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  		}) ;
+		
+	 };
 
 });
