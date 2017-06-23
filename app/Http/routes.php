@@ -11,16 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('guests/index');
-});
+Route::get('/', ['uses'=>'HomeController@getIndex']);
 Route::get('danh-muc/{cateslug}.{cateid}',['uses'=>'HomeController@getListSoftwareSWithCate']);
 Route::get('he-dieu-hanh/{systemslug}.{systemid}',['uses'=>'HomeController@getListSoftwaresWithSystem']);
 Route::get('{softwareslug}.{softwareid}.html',['uses'=>'HomeController@getDetailSoftware']);
 Route::get('download/{softwareslug}.{softwareid}.html',['uses'=>'HomeController@getDownloadSoftware']);
+Route::get('tim-kiem.html',['uses'=>'HomeController@getSearchSoftware']);
 Route::group(['prefix' => 'api'], function(){
 	Route::group(['prefix' => 'system'], function(){
-		Route::get('list-systems',['uses'=>'SystemController@getListSystemAjax']);
+		Route::get('list-systems',['uses'=>'SystemController@getListSystemSimpleAjax']);
 	});
 	Route::group(['prefix' => 'category'], function(){
 		Route::get('list-cates',['uses'=>'CategoryController@getListCateAjax']);

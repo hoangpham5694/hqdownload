@@ -31,7 +31,7 @@ class SoftwareController extends Controller
    		$software = new Software();
    		$software->name= $request->txtName;
       $software->title= $request->txtTitle;
-   		$software->slug = str_slug($request->txtTitle, "-");
+   		$software->slug = str_slug($request->txtName, "-");
    		$software->version = $request->txtVersion;
    		$software->size = $request->txtSize;
    		$software->system_require = $request->txtSysRequire;
@@ -82,7 +82,7 @@ class SoftwareController extends Controller
    		$software = Software::findOrFail($id);
       $software->name= $request->txtName;
       $software->title= $request->txtTitle;
-   		$software->slug = str_slug($request->txtTitle, "-");
+   		$software->slug = str_slug($request->txtName, "-");
    		$software->version = $request->txtVersion;
    		$software->size = $request->txtSize;
    		$software->system_require = $request->txtSysRequire;
@@ -245,7 +245,7 @@ class SoftwareController extends Controller
 	}
   public function getMostDownloadSoftwareAjax($number=10)
   {
-      $softwares = Software::select('name','view','downloaded','title','image')
+      $softwares = Software::select('name','view','downloaded','title','image','slug','id')
       ->where('status','=','active')
       ->orderBy('downloaded','DESC')
       ->limit($number)
@@ -256,7 +256,7 @@ class SoftwareController extends Controller
   {
     if($sysid ==0){
       $softwares = Software::
-      select('name','view','downloaded','title','version','image','description', 'system_require','tags','publisher_name','publisher_url')
+      select('name','view','downloaded','title','version','image','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
       ->where('status','=','active')
 
       ->orderBy('view','DESC')
@@ -264,7 +264,7 @@ class SoftwareController extends Controller
       return json_encode($softwares);
     }
     $softwares = Software::
-      select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
       ->where('status','=','active')
       ->where('system_id','=',$sysid)
       ->orderBy('view','DESC')
@@ -277,7 +277,7 @@ class SoftwareController extends Controller
       $sysid = $request->sysid;
       if($cateid =="") $cateid=null;
       if($sysid =="") $sysid=null;
-      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
       ->where('status','=','active')
       ->where('cate_id','LIKE',$cateid)
       ->where('system_id','LIKE',$sysid)
@@ -293,7 +293,7 @@ class SoftwareController extends Controller
       $sysid = $request->sysid;
       if($cateid =="") $cateid=null;
       if($sysid =="") $sysid=null;
-      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+      $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
       ->where('status','=','active')
       ->where('cate_id','LIKE',$cateid)
       ->where('system_id','LIKE',$sysid)
@@ -309,7 +309,7 @@ class SoftwareController extends Controller
     $sysid = $request->sysid;
     if($cateid =="") $cateid=null;
     if($sysid =="") $sysid=null;
-    $software = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+    $software = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
      ->where('status','=','active') 
     ->where('cate_id','LIKE',$cateid)
     ->where('system_id','LIKE',$sysid)
@@ -324,7 +324,7 @@ class SoftwareController extends Controller
     $vitri =($page -1 ) * $numberRecord;
     $orderBy = $request->orderby;
     $cateId = $request->cateid;
-    $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url')
+    $softwares = Software::select('name','view','downloaded','title','image','version','description', 'system_require','tags','publisher_name','publisher_url','slug','id')
       ->where('status','=','active')
       ->where('cate_id','=',$cateId)
       ->orderBy($orderBy,'DESC')

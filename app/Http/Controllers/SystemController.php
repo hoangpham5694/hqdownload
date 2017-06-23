@@ -65,4 +65,9 @@ class SystemController extends Controller
 			return "Lỗi trong quá trình thực hiện";
     	}
     }
+    public function getListSystemSimpleAjax()
+    {
+        $systems = System::select('name','slug','id')->get();
+        return json_encode($systems);
+    }
 }
