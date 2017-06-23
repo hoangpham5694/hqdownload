@@ -1,8 +1,8 @@
-@extends('guests.master-two-col')
+@extends('guests.mobile.master')
 @section('header')
 
 @endsection
-@section('content')
+@section('main')
 
 <h1 class="detail-title">
                 <img src="{{asset('upload/images/32x32')}}/{{$software->image}}" class="software-icon">
@@ -52,28 +52,26 @@
     <div class="clearfix"></div>
 </div>
 <hr>
-<div class="detail-content">
-    <h2 class="name">{{$software->name}} - {{$software->title}}</h2>
-    <p class="description">
-        <strong>
-            {{$software->description}}
-        </strong>
-    </p>
-    {!!$software->content!!}
-</div>
-<hr>
-<div class="detail-download">
-    <a ng-href="{{url('download')}}/{{$software->slug}}.{{$software->id}}.html" >Tải về</a>
-</div>
-<hr>
-<div class="detail-tags">
-    <strong>Tìm thêm:</strong>
-    <?php $arrTags = explode(",",$software->tags); ?>
-    @foreach($arrTags as $tag)
-        <a href="">{{$tag}}</a>
-    @endforeach
+<div class="detail-link">
+    <h2>Tải về</h2>
+    @if($software->direct_link != "")
+        <a href="{{$software->direct_link}}">Đường dẫn chính</a> <br>
+    @endif
+    @if($software->mirror_link1 != "")
+        <a href="{{$software->mirror_link1}}">Đương dẫn dự phòng 1</a><br>
+    @endif
     
+    @if($software->mirror_link2 != "")
+            <a href="{{$software->mirror_link2}}">Đưòng dẫn dự phòng 2</a><br>
+    @endif
     
+    @if($software->crack != "")
+         <a href="{{$software->crack}}">Crack</a>
+    @endif
+    
+   
+
+   
 </div>
 <hr>
 <div id="similarsoftwares" class="detail-relatedsoftwares clearfix">

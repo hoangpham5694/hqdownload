@@ -19,18 +19,12 @@
 		</div>
 		<div class="search-box">
 			
-        <form action="/timkiem" method="get">
-            <input type="text" name="q" id="q" placeholder="Tìm kiếm ứng dụng" x-webkit-speech="">
-            <select id="platforms" name="platformId">
-                <option value="">Tất cả </option>
-                <option value="windows">Windows </option>
-                <option value="mac">Mac </option>
-                <option value="web">Web</option>
-                <option value="linux">Linux </option>
-                <option value="ios">iOS </option>
-                <option value="android">Android </option>
-                <option value="windowsphone">Windows Phone </option>
-            <option value="tip">Hướng dẫn</option></select>
+        <form action="/tim-kiem.html" method="get" data-ng-init="getListSystems();">
+            <input type="text" name="key" id="q" placeholder="Tìm kiếm ứng dụng" x-webkit-speech="">
+            <select id="platforms" name="system">
+                <option  value="">Tất cả </option>
+                <option ng-repeat="system in listSystems" value="{%system.slug%}">{%system.name%} </option>
+              
             <input id="btnHeaderFind" type="submit" value="Tìm kiếm">
         </form>
  
@@ -40,38 +34,49 @@
 	</div>
 	<div id="main-nav" class="clearfix">
     <div class="tabs">
-        <ul class="navigation clearfix"><li class="first home-menu"><a href="/">Tất cả</a>
-
-     </li>
-     <li id="windows" class="item windows">
-            <a href="https://download.com.vn/windows">
-                <img src="//i.dowload.vn/data/image/icon/2017/windows.png">
-                <span>Windows</span>
+    <ul class="navigation clearfix">
+        <li class="first home-menu" data-ng-init="getAllCategories();">
+            <a href="/">Tất cả</a>
+            <ul class="sub-menu">
+                <li> <h5>Hệ điều hành</h5></li>
+                 <li ng-repeat="system in listSystems" class="item">
+                    <a ng-href="/he-dieu-hanh/{%system.slug%}.{%system.id%}"> <span>{%system.name%}</span></a>
+                 </li> 
+                <li> <h5>Danh mục</h5></li>
+                 <li ng-repeat="category in categories" class="item">
+                    <a ng-href="/danh-muc/{%category.slug%}.{%category.id%}"> <span>{%category.name%}</span></a>
+                 </li> 
+            </ul>
+        </li>
+        <li id="windows" class="item windows">
+            <a href="{{url('he-dieu-hanh/windows.2.html')}}">
+                <img src="{{asset('images/windows.png')}}">
+               <span>Windows</span>
             </a>
                 
         </li><li id="mac" class="item mac">
-            <a href="https://download.com.vn/mac">
-                <img src="//i.dowload.vn/data/image/icon/2015/mac-os.png">
+            <a href="{{url('he-dieu-hanh/mac-os.8.html')}}">
+                <img src="{{asset('images/mac-os.png')}}">
                 <span>Mac</span>
             </a>
                 
         </li><li id="android" class="item android">
-            <a href="https://download.com.vn/android">
-                <img src="//i.dowload.vn/data/image/icon/2015/android.png">
+            <a href="{{url('he-dieu-hanh/android.3.html')}}">
+                <img src="{{asset('images/android.png')}}">
                 <span>Android</span>
             </a>
                
         </li><li id="ios" class="item ios">
-            <a href="https://download.com.vn/ios">
-                <img src="//i.dowload.vn/data/image/icon/2015/ios.png">
+            <a href="{{url('he-dieu-hanh/ios.5.html')}}">
+                <img src="{{asset('images/ios.png')}}">
                 <span>iOS</span>
             </a>
            
         </li>
 
         <li id="web" class="item web">
-            <a href="https://download.com.vn/web">
-                <img src="//i.dowload.vn/data/image/icon/2015/globe.png">
+            <a href="{{url('he-dieu-hanh/wep-app.7.html')}}">
+                <img src="{{asset('images/globe.png')}}">
                 <span>Web Apps</span>
             </a>
               
@@ -79,20 +84,13 @@
 
 
         <li id="docs" class="item docs">
-            <a href="https://download.com.vn/docs">
-                <img src="//i.dowload.vn/data/image/icon/2015/documentsfolder.png">
+            <a href="">
+                <img src="{{asset('images/documentsfolder.png')}}">
                 <span>Tài liệu</span>
             </a>
+        </li>
 
-        </li><li id="Tip" class="item tip">
-		<a href="//tip.download.com.vn">
-			<img src="//i.dowload.vn/data/image/icon/2015/tip.png">
-			<span>Hướng dẫn</span>
-		</a>
-
-
-
-     </li></ul>
+     </ul>
     </div>
 
 </div>

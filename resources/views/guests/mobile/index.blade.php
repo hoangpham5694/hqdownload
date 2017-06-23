@@ -1,21 +1,21 @@
-@extends('guests.master-three-col')
+@extends('guests.mobile.master')
 @section('header')
 
 @endsection
-@section('content')
-<div id="hometopview" data-ng-init="getHighestViewSoftware({{$system->id}});">
-        <a class="title" ng-href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html">
+@section('main')
+<div id="hometopview" data-ng-init="getHighestViewSoftware();">
+        <a class="title" href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html  ">
      {%highestViewSoftware.name%} 
      <i> {%highestViewSoftware.title%} </i>
 </a>
         
 
 
-        <a ng-href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html">
+        <a href="/avast-free-antivirus/download">
             <img ng-src="{{asset('upload/images/128x128')}}/{%highestViewSoftware.image%}" alt="Avast Free Antivirus 2017"></a>
         <div class="publisher-info">
             <span>Phát hành bởi <b>
-                <a ng-href="{%highestViewSoftware.publisher_url%}">{%highestViewSoftware.publisher_name%} </a>
+                <a href="{%highestViewSoftware.publisher_url%}">{%highestViewSoftware.publisher_name%} </a>
             </b></span>
         </div>
             <div class="briefinfo">
@@ -41,7 +41,7 @@
                 </label>
                 <span>{%highestViewSoftware.system_require%}</span>
             </div>
-                    <div class="tags">
+                    <div class="tags" ng-if="highestViewSoftware.tags !=''">
                 <label>
                     Tìm thêm:
                 </label>
@@ -64,7 +64,7 @@
   <div class="tab-content">
     <div id="new" class="tab-pane fade in active">
     
-		<div class="list-softs" data-ng-init="getListNewestSoftwares(0,10,'',{{$system->id}});">
+		<div class="list-softs" data-ng-init="getListNewestSoftwares(0,10,'','');">
 			<div class="item clearfix" ng-repeat="software in highestViewSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -72,15 +72,13 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
+                  
 
                     <div class="publisher-info">
                     	<ul>
                     		<li class="publisher-info">
                                 <span class="item-label">Phát hành:</span>
-                                <a class="item-info" href="">
+                                <a class="item-info" ng-href="{%software.publisher_url%}">
                                     {%software.publisher_name%}
                                 </a>
                             </li>
@@ -93,7 +91,7 @@
                     <div class="list-item-plus">
                     	<ul class="specs-info">
                     	<li class="download-info">
-                    		<a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
+                    		<a href="/neighbours-from-hell/download" class="download-button">
                     			<span>Tải về</span>
                     		</a>
                     	</li>
@@ -127,10 +125,10 @@
                                 <span class="item-label">Yêu cầu:</span>
                                 <span class="item-info">{%software.system_require%}</span>
                             </li>
-                                                    <li class="tags">
+                                <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -145,7 +143,7 @@
     </div>
     <div id="last-update" class="tab-pane fade">
      
-    <div class="list-softs" data-ng-init="getListLastUpdateSoftwares(0,10,'',{{$system->id}});">
+    <div class="list-softs" data-ng-init="getListLastUpdateSoftwares(0,10,'','');">
             <div class="item clearfix" ng-repeat="software in listLastUpdateSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -153,15 +151,12 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
-
+                  
                     <div class="publisher-info">
                         <ul>
                             <li class="publisher-info">
                                 <span class="item-label">Phát hành:</span>
-                                <a class="item-info" href="">
+                                <a class="item-info" href="{%software.publisher_url%}">
                                     {%software.publisher_name%}
                                 </a>
                             </li>
@@ -174,7 +169,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
+                            <a href="/neighbours-from-hell/download" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
@@ -208,10 +203,10 @@
                                 <span class="item-label">Yêu cầu:</span>
                                 <span class="item-info">{%software.system_require%}</span>
                             </li>
-                                                    <li class="tags">
+                            <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -229,7 +224,7 @@
     </div>
     <div id="menu2" class="tab-pane fade">
     
-    <div class="list-softs" data-ng-init="getListRandomSoftwares(10,'',{{$system->id}});">
+    <div class="list-softs" data-ng-init="getListRandomSoftwares(10,'','');">
             <div class="item clearfix" ng-repeat="software in listRandomSoftwares">
                 <h2 class="title">
                     <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
@@ -237,9 +232,7 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
+                 
 
                     <div class="publisher-info">
                         <ul>
@@ -258,7 +251,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
+                            <a href="/neighbours-from-hell/download" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
@@ -292,7 +285,7 @@
                                 <span class="item-label">Yêu cầu:</span>
                                 <span class="item-info">{%software.system_require%}</span>
                             </li>
-                                                    <li class="tags">
+                            <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
                                      <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
@@ -319,5 +312,5 @@
 
 @endsection
 @section('footer')
-
+<script src="<?php echo asset('template/vendor/bootstrap/js/bootstrap.min.js') ; ?>"></script>
 @endsection

@@ -1,8 +1,8 @@
-@extends('guests.master-two-col')
+@extends('guests.mobile.master')
 @section('header')
 
 @endsection
-@section('content')
+@section('main')
 
 <h1 class="detail-title">
                 <img src="{{asset('upload/images/32x32')}}/{{$software->image}}" class="software-icon">

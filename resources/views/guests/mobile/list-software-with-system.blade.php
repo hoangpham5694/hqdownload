@@ -1,8 +1,8 @@
-@extends('guests.master-three-col')
+@extends('guests.mobile.master')
 @section('header')
 
 @endsection
-@section('content')
+@section('main')
 <div id="hometopview" data-ng-init="getHighestViewSoftware({{$system->id}});">
         <a class="title" ng-href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html">
      {%highestViewSoftware.name%} 
@@ -72,10 +72,7 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
-
+          
                     <div class="publisher-info">
                     	<ul>
                     		<li class="publisher-info">
@@ -153,9 +150,7 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
+                
 
                     <div class="publisher-info">
                         <ul>
@@ -237,9 +232,7 @@
                     <i>{%software.title%}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
-                    </a>
+                    
 
                     <div class="publisher-info">
                         <ul>
@@ -319,5 +312,5 @@
 
 @endsection
 @section('footer')
-
+<script src="<?php echo asset('template/vendor/bootstrap/js/bootstrap.min.js') ; ?>"></script>
 @endsection

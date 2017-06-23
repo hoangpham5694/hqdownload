@@ -1,13 +1,14 @@
-@extends('guests.master-two-col')
+@extends('guests.mobile.master')
 @section('header')
 
 @endsection
-@section('content')
+@section('main')
 
 <div class="list-options">
                 <span id="OrderBy">{{$cate->name}}:</span>
-                <a href="" ng-click="getListSoftwaresWithCate(1,{{$cate->id}},'id');" ng-class="{selected: order=='id'}">Phần mềm mới nhất</a>
+                <a href="" ng-click="getListSoftwaresWithCate(1,{{$cate->id}},'id');" ng-class="{selected: order=='id'}">Mới nhất</a>
                 <a href=""  ng-click="getListSoftwaresWithCate(1,{{$cate->id}},'downloaded');" ng-class="{selected: order=='downloaded'}"> Tải nhiều nhất</a>
+                <div class="clearfix"></div>
 </div>
 
             <div class="list-softs" data-ng-init="getListSoftwaresWithCate(1,{{$cate->id}},'downloaded');">
