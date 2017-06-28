@@ -103,7 +103,8 @@
 </div>
     <script src="<?php echo asset('template/vendor/jquery/jquery.min.js') ; ?>"></script>
     <script src="<?php echo asset('template/vendor/bootstrap/js/bootstrap.min.js') ; ?>"></script>
-        <script src="<?php echo asset('app/lib/angular.min.js') ; ?>"></script>
+     <script src="<?php echo asset('template/js/jquery.lazyload.min.js') ; ?>"></script>
+    <script src="<?php echo asset('app/lib/angular.min.js') ; ?>"></script>
     <script src="<?php echo asset('app/app.js') ; ?>"></script>   
     <script src="<?php echo asset('app/controller/guests/GuestController.js') ; ?>"></script>  
 @yield('footer')

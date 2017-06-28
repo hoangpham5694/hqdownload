@@ -19,7 +19,7 @@
                 </h2>
                 <div class="item-info">
                     <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" class="lazy" data-original="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
                     </a>
 
                     <div class="publisher-info">

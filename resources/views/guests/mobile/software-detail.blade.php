@@ -70,7 +70,7 @@
     <strong>Tìm thêm:</strong>
     <?php $arrTags = explode(",",$software->tags); ?>
     @foreach($arrTags as $tag)
-        <a href="">{{$tag}}</a>
+        <a href="{{url('tim-kiem.html')}}?key={{$tag}}">{{$tag}}</a>
     @endforeach
     
     
@@ -83,7 +83,7 @@
         <ul>
         @foreach($suggestSoftwares as $suggestSoftware)
                     <li class="clearfix">
-                            <a class="platform-web" title="{{$suggestSoftware->title}}" href="/web/plug-in-seo/download">
+                            <a class="platform-web" title="{{$suggestSoftware->title}}" href="/{{$suggestSoftware->slug}}.{{$suggestSoftware->id}}.html">
                                 <img src="{{asset('upload/images/32x32')}}/{{$suggestSoftware->image}}" alt="{{$suggestSoftware->name}}">
                                 <span>{{$suggestSoftware->name}}</span>
                                     <i>{{$suggestSoftware->title}}</i>

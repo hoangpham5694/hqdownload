@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div id="hometopview" data-ng-init="getHighestViewSoftware();">
-        <a class="title" href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html  ">
+        <a class="title" ng-href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html  ">
      {%highestViewSoftware.name%} 
      <i> {%highestViewSoftware.title%} </i>
 </a>
@@ -47,7 +47,7 @@
                 </label>
 
 
-                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% highestViewSoftware.tags.split(',')[n]%}</a>
+                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% highestViewSoftware.tags.split(',')[n]%}">  {% highestViewSoftware.tags.split(',')[n]%}</a>
 
 
 
@@ -73,7 +73,7 @@
                 </h2>
                 <div class="item-info">
                     <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                        <img  class="lazy" data-original="{{asset('upload/images/96x96')}}/{%software.image%}" src="" alt="{%software.name%}-{%software.title%}">
                     </a>
 
                     <div class="publisher-info">
@@ -93,7 +93,7 @@
                     <div class="list-item-plus">
                     	<ul class="specs-info">
                     	<li class="download-info">
-                    		<a href="/neighbours-from-hell/download" class="download-button">
+                    		<a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html"" class="download-button">
                     			<span>Tải về</span>
                     		</a>
                     	</li>
@@ -130,7 +130,7 @@
                                 <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -154,7 +154,7 @@
                 </h2>
                 <div class="item-info">
                     <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                        <img class="lazy" data-original="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
                     </a>
 
                     <div class="publisher-info">
@@ -174,7 +174,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a href="/neighbours-from-hell/download" class="download-button">
+                            <a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html"" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
@@ -211,7 +211,7 @@
                             <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -238,7 +238,7 @@
                 </h2>
                 <div class="item-info">
                     <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC" class="lazy" data-original="{{asset('upload/images/96x96')}}/{%software.image%}" alt="{%software.name%}-{%software.title%}">
                     </a>
 
                     <div class="publisher-info">
@@ -258,7 +258,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a href="/neighbours-from-hell/download" class="download-button">
+                            <a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html"" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
@@ -295,7 +295,7 @@
                             <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -320,4 +320,8 @@
 @endsection
 @section('footer')
 
+
+<script>
+    
+</script>
 @endsection

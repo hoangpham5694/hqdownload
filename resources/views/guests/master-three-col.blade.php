@@ -48,7 +48,7 @@
                         </a>
                         <a class="item-image" ng-href="{{url('/')}}/{%software.slug%}.{%software.id%}.html" title="{%software.name%}">
                             <img ng-src="{{asset('upload/images/32x32')}}/{%software.image%}"></a>
-                        <span class="item-downloads">45.960</span>
+                        <span class="item-downloads">{%software.downloaded%}</span>
                         <i> {%software.title%}</i>
                            
                     </div>

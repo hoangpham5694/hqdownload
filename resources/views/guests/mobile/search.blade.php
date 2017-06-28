@@ -18,9 +18,7 @@
                     <i>{{$software->title}}</i>
                 </h2>
                 <div class="item-info">
-                    <a class="item-image" href="{{url('/')}}/{{$software->name}}.{{$software->id}}.html">
-                        <img ng-src="{{asset('upload/images/96x96')}}/{{$software->image}}" alt="{{$software->name}}-{{$software->title}}">
-                    </a>
+
 
                     <div class="publisher-info">
                         <ul>

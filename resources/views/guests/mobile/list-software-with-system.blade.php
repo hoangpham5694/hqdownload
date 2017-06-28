@@ -47,7 +47,7 @@
                 </label>
 
 
-                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% highestViewSoftware.tags.split(',')[n]%}</a>
+                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% highestViewSoftware.tags.split(',')[n]%}</a>
 
 
 
@@ -77,7 +77,7 @@
                     	<ul>
                     		<li class="publisher-info">
                                 <span class="item-label">Phát hành:</span>
-                                <a class="item-info" href="">
+                                <a class="item-info" href="{%software.publisher_url%}">
                                     {%software.publisher_name%}
                                 </a>
                             </li>
@@ -127,7 +127,7 @@
                                                     <li class="tags">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -156,7 +156,7 @@
                         <ul>
                             <li class="publisher-info">
                                 <span class="item-label">Phát hành:</span>
-                                <a class="item-info" href="">
+                                <a class="item-info" href="{%software.publisher_url%}">
                                     {%software.publisher_name%}
                                 </a>
                             </li>
@@ -206,7 +206,7 @@
                                                     <li class="tags">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -238,7 +238,7 @@
                         <ul>
                             <li class="publisher-info">
                                 <span class="item-label">Phát hành:</span>
-                                <a class="item-info" href="">
+                                <a class="item-info" href="{%software.publisher_url%}">
                                     {%software.publisher_name%}
                                 </a>
                             </li>
@@ -288,7 +288,7 @@
                                                     <li class="tags">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>

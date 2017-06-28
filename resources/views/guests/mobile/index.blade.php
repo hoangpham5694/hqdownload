@@ -11,7 +11,7 @@
         
 
 
-        <a href="/avast-free-antivirus/download">
+        <a href="{{url('/')}}/{%highestViewSoftware.slug%}.{%highestViewSoftware.id%}.html ">
             <img ng-src="{{asset('upload/images/128x128')}}/{%highestViewSoftware.image%}" alt="Avast Free Antivirus 2017"></a>
         <div class="publisher-info">
             <span>Phát hành bởi <b>
@@ -47,7 +47,7 @@
                 </label>
 
 
-                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  href="">  {% highestViewSoftware.tags.split(',')[n]%}</a>
+                <a ng-repeat="n in [1,highestViewSoftware.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% highestViewSoftware.tags.split(',')[n]%}">  {% highestViewSoftware.tags.split(',')[n]%}</a>
 
 
 
@@ -91,7 +91,7 @@
                     <div class="list-item-plus">
                     	<ul class="specs-info">
                     	<li class="download-info">
-                    		<a href="/neighbours-from-hell/download" class="download-button">
+                    		<a ng-href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
                     			<span>Tải về</span>
                     		</a>
                     	</li>
@@ -128,7 +128,7 @@
                                 <li class="tags" ng-if="software.tags != ''">
                                 <span class="item-label">Tìm thêm:</span>
                                 <span class="item-info">
-                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="">  {% software.tags.split(',')[n]%}</a>
+                                     <a ng-repeat="n in [1,software.tags.split(',').length] | makeRange"  ng-href="{{url('tim-kiem.html')}}?key={% software.tags.split(',')[n]%}">  {% software.tags.split(',')[n]%}</a>
                                 </span>
                             </li>
                     </ul>
@@ -169,7 +169,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a href="/neighbours-from-hell/download" class="download-button">
+                            <a href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
@@ -251,7 +251,7 @@
                     <div class="list-item-plus">
                         <ul class="specs-info">
                         <li class="download-info">
-                            <a href="/neighbours-from-hell/download" class="download-button">
+                            <a href="{{url('download')}}/{%software.slug%}.{%software.id%}.html" class="download-button">
                                 <span>Tải về</span>
                             </a>
                         </li>
