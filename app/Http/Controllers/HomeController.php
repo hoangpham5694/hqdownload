@@ -64,6 +64,8 @@ class HomeController extends Controller
     public function getDownloadSoftware($softwareslug,$softwareid)
     {
     	$software = Software::select('name','id','title','image','size','version','direct_link','mirror_link1','mirror_link2','crack_link','publisher_name','publisher_url','updated_at','downloaded','system_require')->findOrFail($softwareid);
+        $software->downloaded = $software->downloaded+1;
+        $software->save();
     	$arrTags = explode(",", $software->tags);
     	$keyword ="";
     	if(count($arrTags)>0 ){
