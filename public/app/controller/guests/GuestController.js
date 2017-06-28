@@ -44,7 +44,9 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
 		console.log(url);
 		$http.get(url).then(function successCallback (response){		
 			$scope.highestViewSoftwares = response.data;
-
+			var timeout = setTimeout(function() {
+				$("img.lazy").lazyload();
+			}, 200);
 			console.log($scope.highestViewSoftwares);
 	
 		}  , function errorCallback(response) {
@@ -96,7 +98,9 @@ app.controller('GuestController', function($scope, $http, API,$timeout){
 			$scope.listSoftwaresWithCate = response.data.softwares;
 			$scope.totalSoftwareWithCate = response.data.total  /$scope.maxSoftwaresWithCate +1;
 			//console.log(response.data);
-	
+			var timeout = setTimeout(function() {
+				$("img.lazy").lazyload();
+			}, 100);
 		}  , function errorCallback(response) {
 			console.log(response);
     // called asynchronously if an error occurs
